@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 using System;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace DirectShowLib.BDA
 {
@@ -227,7 +228,7 @@ namespace DirectShowLib.BDA
 
 #if ALLOW_UNTESTED_INTERFACES
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("C5C5C5B0-3ABC-11D6-B25B-00C04FA0C026"),
     InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IXDSToRat
@@ -247,7 +248,7 @@ namespace DirectShowLib.BDA
 
 #endif
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("C5C5C5B1-3ABC-11D6-B25B-00C04FA0C026"),
     InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IEvalRat

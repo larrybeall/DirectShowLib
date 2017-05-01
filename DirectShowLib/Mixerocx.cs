@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 using System;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace DirectShowLib
 {
@@ -57,7 +58,7 @@ namespace DirectShowLib
 
     #region Interfaces
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("81A3BD31-DEE1-11d1-8508-00A0C91F9CA0"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMixerOCXNotify
@@ -72,7 +73,7 @@ namespace DirectShowLib
         int OnDataChange([In] MixerData ulDataFlags);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("81A3BD32-DEE1-11d1-8508-00A0C91F9CA0"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMixerOCX

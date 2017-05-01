@@ -215,7 +215,7 @@ namespace DirectShowLib.BDA
 
 #if ALLOW_UNTESTED_INTERFACES
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("583ec3cc-4960-4857-982b-41a33ea0a006"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IAttributeSet
@@ -228,7 +228,7 @@ namespace DirectShowLib.BDA
           );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("52dbd1ec-e48f-4528-9232-f442a68f0ae1"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IAttributeGet
@@ -255,5 +255,4 @@ namespace DirectShowLib.BDA
 #endif
 
     #endregion
-
 }

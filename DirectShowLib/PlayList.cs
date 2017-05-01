@@ -59,7 +59,7 @@ namespace DirectShowLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a868ff-0ad4-11ce-b03a-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IAMPlayListItem
@@ -116,7 +116,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a868fe-0ad4-11ce-b03a-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IAMPlayList
@@ -148,7 +148,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("4C437B91-6E9E-11d1-A704-006097C4E476"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface ISpecifyParticularPages
@@ -159,7 +159,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("02EF04DD-7580-11d1-BECE-00C04FB6E937"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IAMRebuild

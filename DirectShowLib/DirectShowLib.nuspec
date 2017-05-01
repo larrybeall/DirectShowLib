@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>DirectShowLib</id>
+        <version>2.1.0</version>
+        <title>DirectShow .NET</title>
+        <authors>Larry Beall</authors>
+        <licenseUrl>https://www.gnu.org/licenses/lgpl-2.1.html</licenseUrl>
+        <projectUrl>https://github.com/larrybeall/DirectShowLib</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A port of DirectShowLib to .NET 4.5.  There have been no changes made to this from the available source that is available @ http://directshownet.sourceforge.net/</description>
+        <tags>directshow media</tags>
+    </metadata>
+    <files>
+        <file src="bin\Release\DirectShowLib.dll" target="lib\net20\DirectShowLib.dll" />
+        <file src="bin\Release\DirectShowLib.pdb" target="lib\net20\DirectShowLib.pdb" />
+        <file src="bin\Release_4.0\DirectShowLib.dll" target="lib\net40\DirectShowLib.dll" />
+        <file src="bin\Release_4.0\DirectShowLib.pdb" target="lib\net40\DirectShowLib.pdb" />
+    </files>
+</package>

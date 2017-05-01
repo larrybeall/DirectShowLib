@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace DirectShowLib
 {
@@ -356,7 +357,7 @@ namespace DirectShowLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("dfc581a1-6e1f-4c3a-8d0a-5e9792ea2afc"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRSurface9
@@ -376,7 +377,7 @@ namespace DirectShowLib
 
 #endif
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("69188c61-12a3-40f0-8ffc-342e7b433fd7"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRImagePresenter9
@@ -389,10 +390,9 @@ namespace DirectShowLib
 
         [PreserveSig]
         int PresentImage([In] IntPtr dwUserID, [In] ref VMR9PresentationInfo lpPresInfo);
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("6de9a68a-a928-4522-bf57-655ae3866456"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRSurfaceAllocatorEx9 : IVMRSurfaceAllocator9
@@ -432,7 +432,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("dca3f5df-bb3a-4d03-bd81-84614bfbfa0c"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRSurfaceAllocatorNotify9
@@ -470,7 +470,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("8d5148ea-3f5d-46cf-9df1-d1b896eedb1f"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRSurfaceAllocator9
@@ -497,7 +497,7 @@ namespace DirectShowLib
         int AdviseNotify([In] IVMRSurfaceAllocatorNotify9 lpIVMRSurfAllocNotify);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("5a804648-4f66-4867-9c43-4f5c822cf1b8"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRFilterConfig9
@@ -524,7 +524,7 @@ namespace DirectShowLib
         int GetRenderingMode([Out] out VMR9Mode Mode);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("8f537d09-f85e-4414-b23b-502e54c79927"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRWindowlessControl9
@@ -576,7 +576,7 @@ namespace DirectShowLib
         int GetBorderColor([Out] out int lpClr);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("00d96c29-bbde-4efc-9901-bb5036392146"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRAspectRatioControl9
@@ -588,7 +588,7 @@ namespace DirectShowLib
         int SetAspectRatioMode([In] VMRAspectRatioMode lpdwARMode);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("a215fb8d-13c2-4f7f-993c-003d6271a459"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRDeinterlaceControl9
@@ -632,7 +632,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("4a5c89eb-df51-4654-ac2a-e48e02bbabf6"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRImageCompositor9
@@ -663,7 +663,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("45c15cab-6e22-420a-8043-ae1f0ac02c7d"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRImagePresenterConfig9
@@ -675,7 +675,7 @@ namespace DirectShowLib
         int GetRenderingPrefs([Out] out VMR9RenderPrefs dwRenderFlags);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("ced175e5-1935-4820-81bd-ff6ad00c9108"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRMixerBitmap9
@@ -690,7 +690,7 @@ namespace DirectShowLib
         int GetAlphaBitmapParameters([Out] out VMR9AlphaBitmap pBmpParms);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("1a777eaa-47c8-4930-b2c9-8fee1c1b0f3b"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRMixerControl9
@@ -762,7 +762,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("46c2e457-8ba0-4eef-b80b-0680f0978749"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRMonitorConfig9
@@ -787,7 +787,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("d0cfe38b-93e7-4772-8957-0400c49a4485"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVMRVideoStreamControl9

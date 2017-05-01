@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace DirectShowLib
 {
@@ -106,7 +107,7 @@ namespace DirectShowLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("36d39eb0-dd75-11ce-bf0e-00aa0055595a"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IDirectDrawVideo
@@ -160,7 +161,7 @@ namespace DirectShowLib
         int WillUseFullScreen(out int UseWhenFullScreen);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("dd1d7110-7836-11cf-bf47-00aa0055595a"),
     Obsolete("This interface has been deprecated.", false),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -216,10 +217,9 @@ namespace DirectShowLib
 
         [PreserveSig]
         int SetDefault();
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("53479470-f1dd-11cf-bc42-00aa00ac74f6"),
     Obsolete("This interface has been deprecated.", false),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -277,6 +277,7 @@ namespace DirectShowLib
 
         [PreserveSig]
         new int SetDefault();
+
         #endregion
 
         [PreserveSig]
@@ -290,10 +291,9 @@ namespace DirectShowLib
 
         [PreserveSig]
         int IsKeepPixelAspectRatio(out int pKeepAspect);
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("61ded640-e912-11ce-a099-00aa00479a58"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IBaseVideoMixer
@@ -322,7 +322,7 @@ namespace DirectShowLib
 
 #endif
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("1bd0ecb0-f8e2-11ce-aac6-0020af0b99a3"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IQualProp
@@ -344,7 +344,6 @@ namespace DirectShowLib
 
         [PreserveSig]
         int get_DevSyncOffset(out int piDev);
-
     }
 
     #endregion

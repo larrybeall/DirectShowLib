@@ -7,12 +7,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectShowLib", "DirectShow
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug_4.0|Any CPU = Debug_4.0|Any CPU
 		Debug|Any CPU = Debug|Any CPU
+		Release_4.0|Any CPU = Release_4.0|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62C8005D-1780-4389-B105-45932A9ED5C3}.Debug_4.0|Any CPU.ActiveCfg = Debug_4.0|Any CPU
+		{62C8005D-1780-4389-B105-45932A9ED5C3}.Debug_4.0|Any CPU.Build.0 = Debug_4.0|Any CPU
 		{62C8005D-1780-4389-B105-45932A9ED5C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{62C8005D-1780-4389-B105-45932A9ED5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62C8005D-1780-4389-B105-45932A9ED5C3}.Release_4.0|Any CPU.ActiveCfg = Release_4.0|Any CPU
+		{62C8005D-1780-4389-B105-45932A9ED5C3}.Release_4.0|Any CPU.Build.0 = Release_4.0|Any CPU
 		{62C8005D-1780-4389-B105-45932A9ED5C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62C8005D-1780-4389-B105-45932A9ED5C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

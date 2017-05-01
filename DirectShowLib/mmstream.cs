@@ -24,12 +24,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 using System;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace DirectShowLib.MultimediaStreaming
 {
     #region Utility classes
 
-    sealed public class MsResults
+    public sealed class MsResults
     {
         private MsResults()
         {
@@ -51,7 +52,7 @@ namespace DirectShowLib.MultimediaStreaming
         public const int E_NotRunning               = unchecked((int)0x8004040a);
     }
 
-    sealed public class MsError
+    public sealed class MsError
     {
         private MsError()
         {
@@ -245,7 +246,7 @@ namespace DirectShowLib.MultimediaStreaming
 
     #region GUIDS
 
-    sealed public class MSPID
+    public sealed class MSPID
     {
         private MSPID()
         {
@@ -263,7 +264,7 @@ namespace DirectShowLib.MultimediaStreaming
 
     #region Interfaces
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
     Guid("B502D1BD-9A57-11D0-8FDE-00C04FD9189D")]
     public interface IMediaStream
@@ -304,7 +305,7 @@ namespace DirectShowLib.MultimediaStreaming
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("B502D1BC-9A57-11D0-8FDE-00C04FD9189D"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMultiMediaStream
@@ -358,7 +359,7 @@ namespace DirectShowLib.MultimediaStreaming
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("B502D1BE-9A57-11D0-8FDE-00C04FD9189D"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IStreamSample
