@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 using System;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace DirectShowLib
 {
@@ -108,6 +109,11 @@ namespace DirectShowLib
         public IntPtr unkPtr; // IUnknown Pointer
         public int formatSize;
         public IntPtr formatPtr; // Pointer to a buff determined by formatType
+
+        public override string ToString()
+        {
+            return "{" + majorType + "},{" + subType + "}";
+        }
     }
 
     /// <summary>
@@ -204,14 +210,13 @@ namespace DirectShowLib
         public int cbBuffer;
     }
 
-
     #endregion
 
     #region Interfaces
 
 #if ALLOW_UNTESTED_INTERFACES
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("68961E68-832B-41ea-BC91-63593F3E70E3"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMediaSample2Config
@@ -220,10 +225,9 @@ namespace DirectShowLib
         int GetSurface(
             [MarshalAs(UnmanagedType.IUnknown)] out object ppDirect3DSurface9
             );
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("36b73885-c2c8-11cf-8b46-00805f6cef60"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IReferenceClock2 : IReferenceClock
@@ -255,7 +259,7 @@ namespace DirectShowLib
         #endregion
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a8689d-0ad4-11ce-b03a-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMemInputPin
@@ -286,7 +290,7 @@ namespace DirectShowLib
         int ReceiveCanBlock();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("a3d8cec0-7e5a-11cf-bbc5-00805f6cef20"),
     Obsolete("This interface has been deprecated.", false),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -301,7 +305,7 @@ namespace DirectShowLib
 
 #endif
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a86891-0ad4-11ce-b03a-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IPin
@@ -373,7 +377,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("36b73880-c2c8-11cf-8b46-00805f6cef60"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMediaSeeking
@@ -446,7 +450,7 @@ namespace DirectShowLib
         int GetPreroll([Out] out long pllPreroll);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a8689a-0ad4-11ce-b03a-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMediaSample
@@ -515,7 +519,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a86899-0ad4-11ce-b03a-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMediaFilter : IPersist
@@ -550,7 +554,19 @@ namespace DirectShowLib
         int GetSyncSource([Out] out IReferenceClock pClock);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+     [ComImport, SuppressUnmanagedCodeSecurity,
+     InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
+     Guid("FA993888-4383-415A-A930-DD472A8CF6F7")]
+     public interface IMFGetService
+     {
+       void GetService(
+           [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidService,
+           [In, MarshalAs(UnmanagedType.LPStruct)] Guid riid,
+           [MarshalAs(UnmanagedType.Interface)] out object ppvObject
+           );
+     }
+
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a86895-0ad4-11ce-b03a-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IBaseFilter : IMediaFilter
@@ -607,7 +623,7 @@ namespace DirectShowLib
         int QueryVendorInfo([Out, MarshalAs(UnmanagedType.LPWStr)] out string pVendorInfo);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a8689f-0ad4-11ce-b03a-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IFilterGraph
@@ -648,7 +664,7 @@ namespace DirectShowLib
         int SetDefaultSyncSource();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a86893-0ad4-11ce-b03a-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IEnumFilters
@@ -657,7 +673,7 @@ namespace DirectShowLib
         int Next(
             [In] int cFilters,
             [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex=0)] IBaseFilter[] ppFilter,
-            [In] IntPtr pcFetched
+            [Out] out int pcFetched
             );
 
         [PreserveSig]
@@ -670,29 +686,80 @@ namespace DirectShowLib
         int Clone([Out] out IEnumFilters ppEnum);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    /// <summary>
+    /// Enumerates pins on a filter.
+    /// </summary>
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a86892-0ad4-11ce-b03a-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IEnumPins
     {
+        /// <summary>
+        /// The Next method retrieves a specified number of pins in the enumeration sequence.
+        /// </summary>
+        /// <param name="cPins">Number of pins to retrieve.</param>
+        /// <param name="ppPins">Array of size cPins that is filled with IPin pointers. The caller must release the interfaces.</param>
+        /// <param name="pcFetched">Pointer to a variable that receives the number of pins retrieved.</param>
+        /// <returns>Returns one of the following HRESULT values.
+        /// <b>S_FALSE</b> - Did not retrieve as many pins as requested.
+        /// <b>S_OK</b> - Success.
+        /// <b>E_INVALIDARG</b> - Invalid argument.
+        /// <b>E_POINTER</b> - <b>null</b> pointer argument.
+        /// <b>VFW_E_ENUM_OUT_OF_SYNC</b> - The filter's state has changed and is now inconsistent with the enumerator.
+        /// </returns>
+        /// <remarks>
+        /// This method retrieves pointers to the specified number of pins, starting at the current position in the enumeration, and places them in the 
+        /// specified array. If the method succeeds, the IPin pointers all have outstanding reference counts.Be sure to release them when you are done.
+        /// If the number of pins changes, the enumerator is no longer consistent with the filter, and the method returns VFW_E_ENUM_OUT_OF_SYNC.
+        /// Discard any data obtained from previous calls to the enumerator, because it might be invalid.Update the enumerator by calling the 
+        /// <see cref="IEnumPins.Reset"/> method. You can then call the Next method safely.
+        /// </remarks>
         [PreserveSig]
         int Next(
             [In] int cPins,
             [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex=0)] IPin[] ppPins,
-            [In] IntPtr pcFetched
+            [Out] out int pcFetched
             );
 
+        /// <summary>
+        /// The Skip method skips over a specified number of pins.
+        /// </summary>
+        /// <param name="cPins">Number of pins to skip.</param>
+        /// <returns>Returns one of the following HRESULT
+        /// <b>S_FALSE</b> - Skipped past the end of the sequence.
+        /// <b>S_OK</b> - Success.
+        /// <b>VFW_E_ENUM_OUT_OF_SYNC</b> - The filter's state has changed and is now inconsistent with the enumerator.
+        /// </returns>
         [PreserveSig]
         int Skip([In] int cPins);
 
+        /// <summary>
+        /// The Reset method resets the enumeration sequence to the beginning.
+        /// </summary>
+        /// <returns>Returns S_OK.</returns>
         [PreserveSig]
         int Reset();
 
+        /// <summary>
+        /// The Clone method makes a copy of the enumerator with the same enumeration state.
+        /// </summary>
+        /// <param name="ppEnum">Receives a pointer to the <see cref="IEnumPins"/> interface of the new enumerator. The caller must release the interface.</param>
+        /// <returns>Returns one of the following HRESULT
+        /// <b>S_FALSE</b> - Did not retrieve as many pins as requested.
+        /// <b>S_OK</b> - Success.
+        /// <b>E_OUTOFMEMORY</b> - Insufficient memory.
+        /// <b>E_POINTER</b> - <b>null</b> pointer argument.
+        /// <b>VFW_E_ENUM_OUT_OF_SYNC</b> - The filter's state has changed and is now inconsistent with the enumerator.
+        /// </returns>
+        /// <remarks>
+        /// If the number of pins changes, the enumerator is no longer consistent with the filter, and the method returns VFW_E_ENUM_OUT_OF_SYNC. 
+        /// Discard any data obtained from previous calls to the enumerator, because it might be invalid. Update the enumerator by calling the 
+        /// <see cref="IEnumPins.Reset"/> method. You can then call the Clone method safely.</remarks>
         [PreserveSig]
         int Clone([Out] out IEnumPins ppEnum);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a86897-0ad4-11ce-b03a-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IReferenceClock
@@ -720,7 +787,7 @@ namespace DirectShowLib
         int Unadvise([In] int dwAdviseCookie);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("89c31040-846b-11ce-97d3-00aa0055595a"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IEnumMediaTypes
@@ -729,7 +796,7 @@ namespace DirectShowLib
         int Next(
             [In] int cMediaTypes,
             [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef=typeof(EMTMarshaler), SizeParamIndex = 0)] AMMediaType[] ppMediaTypes,
-            [In] IntPtr pcFetched
+            [Out] out int pcFetched
             );
 
         [PreserveSig]
@@ -742,7 +809,7 @@ namespace DirectShowLib
         int Clone([Out] out IEnumMediaTypes ppEnum);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("36b73884-c2c8-11cf-8b46-00805f6cef60"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMediaSample2 : IMediaSample
@@ -824,7 +891,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("92980b30-c1de-11d2-abf5-00a0c905f375"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMemAllocatorNotifyCallbackTemp
@@ -833,7 +900,7 @@ namespace DirectShowLib
         int NotifyRelease();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("379a0cf0-c1de-11d2-abf5-00a0c905f375"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMemAllocatorCallbackTemp : IMemAllocator
@@ -875,7 +942,7 @@ namespace DirectShowLib
         int GetFreeCount([Out] out int plBuffersFree);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a8689c-0ad4-11ce-b03a-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMemAllocator
@@ -911,7 +978,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("ebec459c-2eca-4d42-a8af-30df557614b8"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IReferenceClockTimerControl

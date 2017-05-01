@@ -57,6 +57,7 @@ namespace DirectShowLib.DMO
         TimeLength = 0x4,
         InComplete = 0x1000000
     } ;
+
     /// <summary>
     /// From DMO_ENUM_FLAGS
     /// </summary>
@@ -76,6 +77,7 @@ namespace DirectShowLib.DMO
         None = 0,
         IsKeyed = 0x00000001
     };
+
     /// <summary>
     /// From DMO_PROCESS_OUTPUT_FLAGS
     /// </summary>
@@ -190,12 +192,11 @@ namespace DirectShowLib.DMO
         public long rtTimelength;
     }
 
-
     #endregion
 
     #region GUIDS
 
-    sealed public class DMOCategory
+    public sealed class DMOCategory
     {
         private DMOCategory()
         {
@@ -228,7 +229,7 @@ namespace DirectShowLib.DMO
 
     #region API Declares
 
-    sealed public class DMOUtils
+    public sealed class DMOUtils
     {
         [DllImport("msdmo.dll", ExactSpelling = true), SuppressUnmanagedCodeSecurity]
         public static extern int DMOEnum(
@@ -297,7 +298,7 @@ namespace DirectShowLib.DMO
 
     #region Utility Classes
 
-    sealed public class DMOResults
+    public sealed class DMOResults
     {
         private DMOResults()
         {
@@ -312,7 +313,7 @@ namespace DirectShowLib.DMO
         public const int E_NoMoreItems = unchecked((int)0x80040206);
     }
 
-    sealed public class DMOError
+    public sealed class DMOError
     {
         private DMOError()
         {
@@ -379,14 +380,13 @@ namespace DirectShowLib.DMO
         }
     }
 
-
     #endregion
 
     #region Interfaces
 
 #if ALLOW_UNTESTED_INTERFACES
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("65ABEA96-CF36-453F-AF8A-705E98F16260"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IDMOQualityControl
@@ -409,7 +409,7 @@ namespace DirectShowLib.DMO
 
 #endif
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
     Guid("2C3CD98A-2BFA-4A53-9C27-5249BA64BA0F")]
     public interface IEnumDMO
@@ -436,7 +436,7 @@ namespace DirectShowLib.DMO
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
     Guid("651B9AD0-0FC7-4AA9-9538-D89931010741")]
     public interface IMediaObjectInPlace
@@ -460,7 +460,7 @@ namespace DirectShowLib.DMO
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("59EFF8B9-938C-4A26-82F2-95CB84CDC837"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMediaBuffer
@@ -482,7 +482,7 @@ namespace DirectShowLib.DMO
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("D8AD0F58-5494-4102-97C5-EC798E59BCF4"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMediaObject
@@ -615,7 +615,7 @@ namespace DirectShowLib.DMO
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("BE8F4F4E-5B16-4D29-B350-7F6B5D9298AC"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IDMOVideoOutputOptimizations

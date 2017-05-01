@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace DirectShowLib
 {
@@ -184,7 +185,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("BC29A660-30E3-11d0-9E69-00C04FD7C15B"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVPConfig : IVPBaseConfig
@@ -275,7 +276,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("EC529B00-1A1F-11D1-BAD9-00609744111A"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVPVBIConfig : IVPBaseConfig
@@ -354,10 +355,9 @@ namespace DirectShowLib
             );
 
         #endregion
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("EC529B01-1A1F-11D1-BAD9-00609744111A"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVPVBINotify : IVPBaseNotify
@@ -368,7 +368,6 @@ namespace DirectShowLib
         new int RenegotiateVPParameters();
 
         #endregion
-
     }
 
 #endif
@@ -380,7 +379,7 @@ namespace DirectShowLib
         int RenegotiateVPParameters();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("C76794A1-D6C5-11d0-9E69-00C04FD7C15B"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVPNotify : IVPBaseNotify
@@ -403,7 +402,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("EBF47183-8764-11d1-9E69-00C04FD7C15B"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IVPNotify2 : IVPNotify
@@ -438,7 +437,6 @@ namespace DirectShowLib
         int GetVPSyncMaster(
             [MarshalAs(UnmanagedType.Bool)] out bool pbVPSyncMaster
             );
-
     }
 
     #endregion

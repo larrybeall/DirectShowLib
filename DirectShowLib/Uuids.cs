@@ -430,6 +430,13 @@ namespace DirectShowLib
     {
     }
 
+  /// <summary>
+  /// CLSID_EnhancedVideoRenderer
+  /// </summary>
+  [ComImport, Guid("fa10746c-9b63-4b6c-bc49-fc300ea5f256")]
+  public class EnhancedVideoRenderer
+  {
+  }
 
     /// <summary>
     /// CLSID_VideoRendererDefault
@@ -989,7 +996,7 @@ namespace DirectShowLib
 
     #region GUIDS
 
-    static public class FilterCategory
+    public static class FilterCategory
     {
         /// <summary> CLSID_CPCAFiltersCategory </summary>
         public static readonly Guid CPCAFiltersCategory = new Guid(0xC4C4C4FC, 0x0049, 0x4E2B, 0x98, 0xFB, 0x95, 0x37, 0xF6, 0xCE, 0x51, 0x6D);
@@ -1116,9 +1123,17 @@ namespace DirectShowLib
 
         /// <summary> Not defined </summary>
         public static readonly Guid LTMMVideoProcessors = new Guid(0xE526D606, 0x22E7, 0x494C, 0xB8, 0x1E, 0xAC, 0x0A, 0x94, 0xBF, 0xE6, 0x03);
+
+    /// <summary> Not defined </summary>
+    public static readonly Guid BDACPCAFilters = new Guid(0xC4C4C4FC, 0x0049, 0x4E2B, 0x98, 0xFB, 0x95, 0x37, 0xF6, 0xCE,
+                                                          0x51, 0x6D);
+
+    /// <summary> Not defined </summary>
+    public static readonly Guid AMKSVideoScreen = new Guid(0xe6f07b5f, 0xEE97, 0x4A90, 0xB0, 0x76, 0x33, 0xF5, 0x7B,
+                                                           0xF4, 0xEA, 0xa7);
     }
 
-    static public class VMRClsId
+     public static class VMRClsId
     {
         /// <summary>CLSID_AllocPresenter</summary>
         public static readonly Guid AllocPresenter = new Guid(0x99d54f63, 0x1a69, 0x41ae, 0xaa, 0x4d, 0xc9, 0x76, 0xeb, 0x3f, 0x07, 0x13);
@@ -1127,7 +1142,7 @@ namespace DirectShowLib
         public static readonly Guid AllocPresenterDDXclMode = new Guid(0x4444ac9e, 0x242e, 0x471b, 0xa3, 0xc7, 0x45, 0xdc, 0xd4, 0x63, 0x52, 0xbc);
     }
 
-    static public class TVEClsId
+    public static class TVEClsId
     {
         /// <summary>CLSID_DShowTVEFilter</summary>
         public static readonly Guid DShowTVEFilter = new Guid(0x05500280, 0xFAA5, 0x4DF9, 0x82, 0x46, 0xBF, 0xC2, 0x3A, 0xC5, 0xCE, 0xA8);
@@ -1142,7 +1157,7 @@ namespace DirectShowLib
         public static readonly Guid TVEFilterStatsProperties = new Guid(0x05500283, 0xFAA5, 0x4DF9, 0x82, 0x46, 0xBF, 0xC2, 0x3A, 0xC5, 0xCE, 0xA8);
     }
 
-    static public class ENCAPIClsId
+    public static class ENCAPIClsId
     {
         /// <summary>CLSID_IVideoEncoderProxy</summary>
         public static readonly Guid IVideoEncoderProxy = new Guid(0xb43c4eec, 0x8c32, 0x4791, 0x91, 0x02, 0x50, 0x8a, 0xda, 0x5e, 0xe8, 0xe7);
@@ -1154,7 +1169,7 @@ namespace DirectShowLib
         public static readonly Guid IVideoEncoderCodecAPIProxy = new Guid(0xb05dabd9, 0x56e5, 0x4fdc, 0xaf, 0xa4, 0x8a, 0x47, 0xe9, 0x1f, 0x1c, 0x9c);
     }
 
-    static public class MediaType
+    public static class MediaType
     {
         public static readonly Guid Null = Guid.Empty;
 
@@ -1166,6 +1181,12 @@ namespace DirectShowLib
 
         /// <summary> MEDIATYPE_Audio 'auds' </summary>
         public static readonly Guid Audio = new Guid(0x73647561, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+
+        /// <summary> MEDIATYPE_Subtitle 'subs' </summary>
+        public static readonly Guid Subtitle = new Guid(0xE487EB08, 0x6B26, 0x4be9, 0x9D, 0xD3, 0x99, 0x34, 0x34, 0xD3, 0x13, 0xFD);
+
+        /// <summary> MEDIATYPE_FileSourceAsync </summary>
+        public static readonly Guid FileSourceAsync = new Guid(0xE436EBB5, 0x524F, 0x11CE, 0x9F, 0x53, 0x00, 0x20, 0xAF, 0x0B, 0xA7, 0x70);
 
         /// <summary> MEDIATYPE_Text 'txts' </summary>
         public static readonly Guid Texts = new Guid(0x73747874, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
@@ -1217,11 +1238,511 @@ namespace DirectShowLib
 
         /// <summary> MEDIATYPE_CC_CONTAINER </summary>
         public static readonly Guid CC_Container = new Guid(0xaeb312e9, 0x3357, 0x43ca, 0xb7, 0x1, 0x97, 0xec, 0x19, 0x8e, 0x2b, 0x62);
-
     }
 
-    static public class MediaSubType
+    public static class MediaSubType
     {
+
+        #region Audio
+
+        public static class Audio
+        {
+          #region AAC subtypes
+    
+          /// <summary> MEDIASUBTYPE_RAW_AAC1 </summary>
+          public static readonly Guid Aac = new Guid("{000000FF-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_LATM_AAC </summary>
+          public static readonly Guid LatmAac = new Guid("{000001FF-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_MPEG_LOAS </summary>
+          public static readonly Guid MpegLoas = new Guid(0x00001602, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> WAVE_FORMAT_AAC_ADTS </summary>
+          public static readonly Guid AacAdts = new Guid("{53544441-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_MPEG_ADTS_AAC </summary>
+          public static readonly Guid MpegAdtsAac = new Guid(0x00001600, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_MPEG_RAW_AAC </summary>
+          public static readonly Guid MpegRawAac = new Guid(0x00001601, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_NOKIA_MPEG_ADTS_AAC </summary>
+          public static readonly Guid NokiaMpegAdtsAac = new Guid(0x00001608, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_NOKIA_MPEG_RAW_AAC </summary>
+          public static readonly Guid NokiaMpegRawAac = new Guid(0x00001609, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_VODAFONE_MPEG_ADTS_AAC </summary>
+          public static readonly Guid VodafoneMpegAdtsAac = new Guid(0x0000160A, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_VODAFONE_MPEG_RAW_AAC </summary>
+          public static readonly Guid VodafoneMpegRawAac = new Guid(0x0000160B, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_MPEG_HEAAC </summary>
+          public static readonly Guid MpegHeAac = new Guid(0x00001610, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_ALS </summary>
+          public static readonly Guid Als = new Guid(0x20534C41, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          #endregion
+    
+          #region MPEG4 subtypes
+    
+          /// <summary> MEDIASUBTYPE_MP4A </summary>
+          public static readonly Guid Mpeg4Audio = new Guid("{4134504D-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_mp4a </summary>
+          public static readonly Guid Mpeg4AudioAdvanced = new Guid("{6134706D-0000-0010-8000-00AA00389B71}");
+    
+          #endregion
+    
+          #region Dolby subtypes
+    
+          /// <summary> MEDIASUBTYPE_WAVE_DOLBY_AC3</summary>
+          public static readonly Guid DolbyWaveAc3 = new Guid("{00002000-0000-0010-8000-00aa00389b71}");
+    
+          /// <summary> MEDIASUBTYPE_DOLBY_AC3_SPDIF </summary>
+          public static readonly Guid DolbyAc3Spdif = new Guid(0x00000092, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_DOLBY_DDPLUS </summary>
+          public static readonly Guid DolbyEac3 = new Guid(0xa7fb87af, 0x2d02, 0x42fb, 0xa4, 0xd4, 0x05, 0xcd, 0x93, 0x84, 0x3b, 0xdd);
+    
+          /// <summary> MEDIASUBTYPE_DOLBY_DDPLUS_ARCSOFT </summary>
+          public static readonly Guid DolbyArcsoftEac3 = new Guid(0x71cfa727, 0x37e4, 0x404a, 0xae, 0xc0, 0x34, 0x84, 0x25, 0x32, 0xef, 0xf7);
+    
+          /// <summary> MEDIASUBTYPE_DOLBY_TRUEHD </summary>
+          public static readonly Guid DolbyTrueHd = new Guid(0xeb27cec4, 0x163e, 0x4ca3, 0x8b, 0x74, 0x8e, 0x25, 0xf9, 0x1b, 0x51, 0x7e);
+    
+          /// <summary> MEDIASUBTYPE_DOLBY_TRUEHD_ARCSOFT </summary>
+          public static readonly Guid DolbyArcsoftTrueHd = new Guid(0x4288B843, 0x610B, 0x4E15, 0xA5, 0x3B, 0x43, 0x00, 0x7F, 0xCF, 0xF6, 0x14);
+    
+          /// <summary> MEDIASUBTYPE_DOLBY_AC3 </summary>
+          public static readonly Guid DolbyAc3 = new Guid(0xe06d802c, 0xdb46, 0x11cf, 0xb4, 0xd1, 0x00, 0x80, 0x05f, 0x6c, 0xbb, 0xea);
+    
+          #endregion
+    
+          #region DTS subtypes
+    
+          /// <summary> MEDIASUBTYPE_WAVE_DTS </summary>
+          public static readonly Guid WaveDts = new Guid("{00002001-0000-0010-8000-00aa00389b71}");
+    
+          /// <summary> MEDIASUBTYPE_DTS </summary>
+          public static readonly Guid Dts = new Guid(0xe06d8033, 0xdb46, 0x11cf, 0xb4, 0xd1, 0x00, 0x80, 0x05f, 0x6c, 0xbb, 0xea);
+    
+          /// <summary> MEDIASUBTYPE_DTS_HD </summary>
+          public static readonly Guid DtsHd = new Guid(0xa2e58eb7, 0xfa9, 0x48bb, 0xa4, 0xc, 0xfa, 0xe, 0x15, 0x6d, 0x6, 0x45);
+    
+          #endregion
+    
+          #region MPEG audio subtypes
+    
+          /// <summary> MEDIASUBTYPE_MPEG1Packet </summary>
+          public static readonly Guid Mpeg1Packet = new Guid(0xe436eb80, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
+    
+          /// <summary> MEDIASUBTYPE_MPEG1Payload </summary>
+          public static readonly Guid Mpeg1Payload = new Guid(0xe436eb81, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
+    
+          /// <summary> MEDIASUBTYPE_MPEG1AudioPayload </summary>
+          public static readonly Guid Mpeg1AudioPayload = new Guid(0x00000050, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_MP3 </summary>
+          public static readonly Guid Mp3 = new Guid("{00000055-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_MPEG2_AUDIO </summary>
+          public static readonly Guid Mpeg2Audio = new Guid(0xe06d802b, 0xdb46, 0x11cf, 0xb4, 0xd1, 0x00, 0x80, 0x5f, 0x6c, 0xbb, 0xea);
+    
+          #endregion
+    
+          #region FLAC subtypes
+    
+          /// <summary> MEDIASUBTYPE_FLAC </summary>
+          public static readonly Guid Flac = new Guid("{0000F1AC-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_FLAC_FRAMED </summary>
+          public static readonly Guid FlacFramed = new Guid("{1541C5C0-CDDF-477d-BC0A-86F8AE7F8354}");
+    
+          #endregion
+    
+          #region OGG Vorbis subtypes
+    
+          /// <summary> MEDIASUBTYPE_Vorbis2 </summary>
+          public static readonly Guid Vorbis2 = new Guid(0x8d2fd10b, 0x5841, 0x4a6b, 0x89, 0x5, 0x58, 0x8f, 0xec, 0x1a, 0xde, 0xd9);
+    
+          #endregion
+    
+          #region Other Lossless subtypes
+    
+          /// <summary> MEDIASUBTYPE_TTA1 </summary>
+          public static readonly Guid Tta1 = new Guid("{000077A1-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_WAVPACK4 </summary>
+          public static readonly Guid WavPack4 = new Guid("{00005756-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_MLP </summary>
+          public static readonly Guid Mlp = new Guid(0x20504C4D, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_ALAC </summary>
+          public static readonly Guid Alac = new Guid(0x63616C61, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_AES3 </summary>
+          public static readonly Guid Aes3 = new Guid("{33534541-0000-0010-8000-00AA00389B71}");
+    
+          #endregion
+    
+          #region LPCM subtypes
+    
+          /// <summary> MEDIASUBTYPE_DVD_LPCM_AUDIO </summary>
+          public static readonly Guid DvdLpcmAudio = new Guid(0xe06d8032, 0xdb46, 0x11cf, 0xb4, 0xd1, 0x00, 0x80, 0x05f, 0x6c, 0xbb, 0xea);
+    
+          /// <summary> MEDIASUBTYPE_BD_LPCM_AUDIO </summary>
+          public static readonly Guid BdLpcmAudio = new Guid(0xa23eb7fc, 0x510b, 0x466f, 0x9f, 0xbf, 0x5f, 0x87, 0x8f, 0x69, 0x34, 0x7c);
+    
+          /// <summary> MEDIASUBTYPE_HDMV_LPCM_AUDIO </summary>
+          public static readonly Guid HdmvLpcmAudio = new Guid(0x949f97fd, 0x56f6, 0x4527, 0xb4, 0xae, 0xdd, 0xeb, 0x37, 0x5a, 0xb8, 0xf);
+    
+          #endregion
+    
+          #region QT PCM subtypes
+    
+          /// <summary> MEDIASUBTYPE_PCM_NONE </summary>
+          public static readonly Guid PcmNone = new Guid(0x454E4F4E, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_PCM_RAW </summary>
+          public static readonly Guid PcmRaw = new Guid(0x20776172, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_PCM_TWOS </summary>
+          public static readonly Guid PcmTwos = new Guid(0x736f7774, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_PCM_SOWT </summary>
+          public static readonly Guid PcmSowt = new Guid(0x74776f73, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_PCM_IN24 </summary>
+          public static readonly Guid PcmIn24 = new Guid(0x34326E69, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_PCM_IN32 </summary>
+          public static readonly Guid PcmIn32 = new Guid(0x32336E69, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_PCM_FL32 </summary>
+          public static readonly Guid PcmFl32 = new Guid(0x32336C66, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_PCM_FL64 </summary>
+          public static readonly Guid PcmFl64 = new Guid(0x34366C66, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_PCM_IN24_le </summary>
+          public static readonly Guid PcmIn24Le = new Guid(0x696E3234, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_PCM_IN32_le </summary>
+          public static readonly Guid PcmIn32Le = new Guid(0x696E3332, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_PCM_FL32_le </summary>
+          public static readonly Guid PcmFl32Le = new Guid(0x666C3332, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_PCM_FL64_le </summary>
+          public static readonly Guid PcmFl64Le = new Guid(0x666C3634, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          #endregion
+    
+          #region WMA subtypes
+    
+          /// <summary> MEDIASUBTYPE_MSAUDIO1 </summary>
+          public static readonly Guid MsAudio = new Guid(0x00000160, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_WMAUDIO2 </summary>
+          public static readonly Guid WmAudio2 = new Guid(0x00000161, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_WMAUDIO3 </summary>
+          public static readonly Guid WmAudio3 = new Guid(0x00000162, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_WMAUDIO_LOSSLESS </summary>
+          public static readonly Guid WmAudioLossless = new Guid(0x00000163, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_WMASPDIF </summary>
+          public static readonly Guid WmaSpdif = new Guid(0x00000164, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_WMAUDIO4 </summary>
+          public static readonly Guid WmAudio4 = new Guid(0x00000168, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          #endregion
+    
+          #region RealMedia Audio subtypes
+    
+          /// <summary> MEDIASUBTYPE_COOK </summary>
+          public static readonly Guid Cook = new Guid(0x4b4f4f43, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_RAAC </summary>
+          public static readonly Guid Raac = new Guid(0x43414152, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_RACP </summary>
+          public static readonly Guid Racp = new Guid(0x50434152, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_SIPR </summary>
+          public static readonly Guid Sipr = new Guid(0x52504953, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_SIPR_WAVE </summary>
+          public static readonly Guid SiprWave = new Guid(0x00000130, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_DNET </summary>
+          public static readonly Guid Dnet = new Guid(0x54454e44, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_28_8 </summary>
+          public static readonly Guid Ra28_8 = new Guid(0x385f3832, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_14_4 </summary>
+          public static readonly Guid Ra14_4 = new Guid(0x345f3431, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_RALF </summary>
+          public static readonly Guid Ralf = new Guid(0x464C4152, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          #endregion
+    
+          #region DSD audio subtypes
+    
+          /// <summary> MEDIASUBTYPE_DSDL </summary>
+          public static readonly Guid Dsdl = new Guid(0x4C445344, 0x000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_DSDM </summary>
+          public static readonly Guid Dsdm = new Guid(0x4D445344, 0x000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_DSD1 </summary>
+          public static readonly Guid Dsd1 = new Guid(0x31445344, 0x000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_DSD8 </summary>
+          public static readonly Guid Dsd8 = new Guid(0x38445344, 0x000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          #endregion
+    
+          #region Misc subtypes
+    
+          /// <summary> MEDIASUBTYPE_PCM </summary>
+          public static readonly Guid Pcm = new Guid(0x00000001, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_DRM_Audio </summary>
+          public static readonly Guid DrmAudio = new Guid(0x00000009, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_IEEE_FLOAT </summary>
+          public static readonly Guid IeeeFloat = new Guid(0x00000003, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_RAW_SPORT </summary>
+          public static readonly Guid RawSport = new Guid(0x00000240, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_SPDIF_TAG_241h </summary>
+          public static readonly Guid SpdifTag241h = new Guid(0x00000241, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_PCMAudio_Obsolete </summary>
+          public static readonly Guid PcmAudioObsolete = new Guid(0xe436eb8a, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
+    
+          /// <summary> MEDIASUBTYPE_WAVE </summary>
+          public static readonly Guid Wave = new Guid(0xe436eb8b, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
+    
+          /// <summary> MEDIASUBTYPE_AMR </summary>
+          public static readonly Guid Amr = new Guid(0x000000FE, 0x000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_FFMPEG_AUDIO </summary>
+          public static readonly Guid FfmpegAudio = new Guid(0xafbc2343, 0x3dcb, 0x4047, 0x96, 0x55, 0xe1, 0xe6, 0x2a, 0x61, 0xb1, 0xc5);
+    
+          /// <summary> MEDIASUBTYPE_SPEEX </summary>
+          public static readonly Guid Speex = new Guid(0x0000A109, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> WAVE_FORMAT_OPUS </summary>
+          public static readonly Guid Opus = new Guid(0x5355504F, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_SAMR </summary>
+          public static readonly Guid Samr = new Guid(0x726D6173, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_NELLYMOSER </summary>
+          public static readonly Guid Nellymoser = new Guid(0x4C4C454E, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_ALAW </summary>
+          public static readonly Guid Alaw = new Guid(0x00000006, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_MULAW </summary>
+          public static readonly Guid Mulaw = new Guid(0x00000007, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_MSGSM610 </summary>
+          public static readonly Guid MsGsm610 = new Guid(0x00000031, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_ADPCM_MS </summary>
+          public static readonly Guid AdPmcMs = new Guid(0x00000002, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_TRUESPEECH </summary>
+          public static readonly Guid TrueSpeech = new Guid(0x00000022, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_QDM2 </summary>
+          public static readonly Guid Qdm2 = new Guid(0x324D4451, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_VOXWARE_RT29 </summary>
+          public static readonly Guid Rt29 = new Guid(0x00000075, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_ATRAC3 </summary>
+          public static readonly Guid Atrac3 = new Guid(0x00000270, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_ATRC </summary>
+          public static readonly Guid Atrc = new Guid(0x43525441, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_ATRAC3P </summary>
+          public static readonly Guid Atrac3P = new Guid(0xE923AABF, 0xCB58, 0x4471, 0xA1, 0x19, 0xFF, 0xFA, 0x01, 0xE4, 0xCE, 0x62);
+    
+          #endregion
+    
+          #region BINK
+    
+          /// <summary> MEDIASUBTYPE_Bink </summary>
+          public static readonly Guid Bink = new Guid("{31554142-0000-0010-8000-00AA00389B71}");
+    
+          #endregion 
+        }
+    
+        #endregion
+    
+        #region Video
+    
+        [CLSCompliant(false)]
+        public static class Video
+        {
+          #region H264 video subtypes
+    
+          /// <summary> MEDIASUBTYPE_H264 </summary>
+          public static readonly Guid H264 = new Guid(0x34363248, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_h264 </summary>
+          public static readonly Guid h264 = new Guid(0x34363268, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_X264 </summary>
+          public static readonly Guid X264 = new Guid(0x34363258, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_x264 </summary>
+          public static readonly Guid x264 = new Guid(0x34363278, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_AVC1 </summary>
+          public static readonly Guid Avc1 = new Guid(0x31435641, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_avc1 </summary>
+          public static readonly Guid avc1 = new Guid(0x31637661, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_CCV1 </summary>
+          public static readonly Guid Ccv1 = new Guid(0x31564343, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_H264_bis </summary>
+          public static readonly Guid H264Bis = new Guid(0x8D2D71CB, 0x243F, 0x45E3, 0xB2, 0xD8, 0x5F, 0xD7, 0x96, 0x7E, 0xC0, 0x9B);
+    
+          /// <summary> MEDIASUBTYPE_AMVC </summary>
+          public static readonly Guid Amvc = new Guid(0x43564D41, 0x243F, 0x45E3, 0xB2, 0xD8, 0x5F, 0xD7, 0x96, 0x7E, 0xC0, 0x9B);
+    
+          /// <summary> MEDIASUBTYPE_MVC1 </summary>
+          public static readonly Guid Mvc1 = new Guid(0x3143564D, 0x243F, 0x45E3, 0xB2, 0xD8, 0x5F, 0xD7, 0x96, 0x7E, 0xC0, 0x9B);
+    
+          #endregion
+    
+          #region HEVC subtypes
+    
+          /// <summary> MEDIASUBTYPE_HEVC </summary>
+          public static readonly Guid Hevc = new Guid(0x43564548, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_HVC1 </summary>
+          public static readonly Guid Hvc1 = new Guid(0x31435648, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_HM10 </summary>
+          public static readonly Guid Hm10 = new Guid(0x30314D48, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          #endregion
+    
+          #region MPEG video subtypes
+    
+          /// <summary> MEDIASUBTYPE_MPEG1Payload </summary>
+          public static readonly Guid Mpeg1Payload = new Guid(0xe436eb81, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
+    
+          #endregion
+    
+          #region BINK video subtypes
+    
+          /// <summary> MEDIASUBTYPE_BIKI </summary>
+          public static readonly Guid Bink = new Guid("{694B4942-0000-0010-8000-00AA00389B71}");
+    
+          #endregion
+    
+          #region DivX 3.x subtypes
+    
+          /// <summary> MEDIASUBTYPE_DIV3 </summary>
+          public static readonly Guid Div3 = new Guid("{33564944-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_div3 </summary>
+          public static readonly Guid div3 = new Guid("{33766964-0000-0010-8000-00AA00389B71}");
+    
+          #endregion
+    
+          #region DvX 5 subtypes
+    
+          /// <summary> MEDIASUBTYPE_DX50 </summary>
+          public static readonly Guid Dx50 = new Guid(0x30355844, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_dx50 </summary>
+          public static readonly Guid dx50 = new Guid(0x30357864, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_DIVX </summary>
+          public static readonly Guid Divx = new Guid(0x58564944, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          /// <summary> MEDIASUBTYPE_divx </summary>
+          public static readonly Guid divx = new Guid(0x78766964, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+          #endregion
+    
+          #region DV video subtypes
+    
+          /// <summary> MEDIASUBTYPE_DVSD </summary>
+          public static readonly Guid Dvsd = new Guid("{64737664-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_DVHD </summary>
+          public static readonly Guid Dvhd = new Guid("{64687664-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_DVSL </summary>
+          public static readonly Guid Dvsl = new Guid("{6c737664-0000-0010-8000-00AA00389B71}");
+    
+          #endregion
+    
+          #region DVCPro video subtypes
+    
+          /// <summary> MEDIASUBTYPE_DVCP    </summary>
+          public static readonly Guid Dvcp = new Guid("{70637664-0000-0010-8000-00AA00389B71}");
+    
+          #endregion
+    
+          #region Flash video subtypes
+    
+          /// <summary> MEDIASUBTYPE_FLV1    </summary>
+          public static readonly Guid Flv1 = new Guid("{31564C46-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_flv1    </summary>
+          public static readonly Guid flv1 = new Guid("{31766C66-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_FLV4    </summary>
+          public static readonly Guid Flv4 = new Guid("{34564C46-0000-0010-8000-00AA00389B71}");
+    
+          /// <summary> MEDIASUBTYPE_flv4    </summary>
+          public static readonly Guid flv4 = new Guid("{34766C66-0000-0010-8000-00AA00389B71}");
+    
+          #endregion
+    
+          #region FRAPS video subtypes
+    
+          /// <summary> MEDIASUBTYPE_FPS1    </summary>
+          public static readonly Guid Fps1 = new Guid("{31535046-0000-0010-8000-00AA00389B71}");
+    
+          #endregion
+    
+        }
+    
+        #endregion
+    
+        #region Splitter
+    
+        [CLSCompliant(false)]
+        public static class Splitter
+        {
+        }
+    
+        #endregion
+
         public static readonly Guid Null = Guid.Empty;
 
         /// <summary> MEDIASUBTYPE_CLPL </summary>
@@ -1254,6 +1775,27 @@ namespace DirectShowLib
         /// <summary> MEDIASUBTYPE_Y211 </summary>
         public static readonly Guid Y211 = new Guid(0x31313259, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
 
+        /// <summary> MEDIASUBTYPE_YV16 </summary>
+        public static readonly Guid YV16 = new Guid(0x36315659, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+        /// <summary> MEDIASUBTYPE_YV24 </summary>
+        public static readonly Guid YV24 = new Guid(0x34325659, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+        /// <summary> MEDIASUBTYPE_v210 </summary>
+        public static readonly Guid v210 = new Guid(0x30313276, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+        /// <summary> MEDIASUBTYPE_v216 </summary>
+        public static readonly Guid v216 = new Guid(0x36313276, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+        /// <summary> MEDIASUBTYPE_Y410 </summary>
+        public static readonly Guid Y410 = new Guid(0x30313459, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+        /// <summary> MEDIASUBTYPE_Y416 </summary>
+        public static readonly Guid Y416 = new Guid(0x36313459, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
+        /// <summary> MEDIASUBTYPE_v410 </summary>
+        public static readonly Guid v410 = new Guid(0x30313476, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
+    
         /// <summary> MEDIASUBTYPE_CLJR </summary>
         public static readonly Guid CLJR = new Guid(0x524a4c43, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
 
@@ -1310,6 +1852,36 @@ namespace DirectShowLib
 
         /// <summary> MEDIASUBTYPE_RGB32 </summary>
         public static readonly Guid RGB32 = new Guid(0xe436eb7e, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
+
+        public static readonly Guid DXVA_H264_E = new Guid(0x1b81be68, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_H264_F = new Guid(0x1b81be69, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_VC1_A = new Guid(0x1b81bea0, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_VC1_B = new Guid(0x1b81bea1, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_VC1_C = new Guid(0x1b81bea2, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_VC1_D = new Guid(0x1b81bea3, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_MPEG2_A = new Guid(0x1b81be0a, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_MPEG2_B = new Guid(0x1b81be0b, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_MPEG2_C = new Guid(0x1b81be0c, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_MPEG2_D = new Guid(0x1b81be0d, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_WMV9_A = new Guid(0x1b81be90, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_WMV9_B = new Guid(0x1b81be91, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_WMV9_C = new Guid(0x1b81be94, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_WMV8_A = new Guid(0x1b81be80, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
+    
+        public static readonly Guid DXVA_WMV8_B = new Guid(0x1b81be81, 0xa0c7, 0x11d3, 0xb9, 0x84, 0x00, 0xc0, 0x4f, 0x2e, 0x73, 0xc5);
 
         /// <summary> MEDIASUBTYPE_ARGB1555 </summary>
         public static readonly Guid ARGB1555 = new Guid(0x297c55af, 0xe209, 0x4cb3, 0xb7, 0x57, 0xc7, 0x6d, 0x6b, 0x9c, 0x88, 0xa8);
@@ -1392,15 +1964,6 @@ namespace DirectShowLib
         /// <summary> MEDIASUBTYPE_Overlay </summary>
         public static readonly Guid Overlay = new Guid(0xe436eb7f, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
 
-        /// <summary> MEDIASUBTYPE_MPEG1Packet </summary>
-        public static readonly Guid MPEG1Packet = new Guid(0xe436eb80, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
-
-        /// <summary> MEDIASUBTYPE_MPEG1Payload </summary>
-        public static readonly Guid MPEG1Payload = new Guid(0xe436eb81, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
-
-        /// <summary> MEDIASUBTYPE_MPEG1AudioPayload </summary>
-        public static readonly Guid MPEG1AudioPayload = new Guid(0x00000050, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
-
         /// <summary> MEDIATYPE_MPEG1SystemStream </summary>
         public static readonly Guid MPEG1SystemStream = new Guid(0xe436eb82, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
 
@@ -1436,15 +1999,6 @@ namespace DirectShowLib
 
         /// <summary> MEDIASUBTYPE_QTJpeg </summary>
         public static readonly Guid QTJpeg = new Guid(0x6765706a, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
-
-        /// <summary> MEDIASUBTYPE_PCMAudio_Obsolete </summary>
-        public static readonly Guid PCMAudio_Obsolete = new Guid(0xe436eb8a, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
-
-        /// <summary> MEDIASUBTYPE_PCM </summary>
-        public static readonly Guid PCM = new Guid(0x00000001, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
-
-        /// <summary> MEDIASUBTYPE_WAVE </summary>
-        public static readonly Guid WAVE = new Guid(0xe436eb8b, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
 
         /// <summary> MEDIASUBTYPE_AU </summary>
         public static readonly Guid AU = new Guid(0xe436eb8c, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
@@ -1484,21 +2038,6 @@ namespace DirectShowLib
 
         /// <summary> MEDIASUBTYPE_VPS </summary>
         public static readonly Guid VPS = new Guid(0xa1b3f620, 0x9792, 0x4d8d, 0x81, 0xa4, 0x86, 0xaf, 0x25, 0x77, 0x20, 0x90);
-
-        /// <summary> MEDIASUBTYPE_DRM_Audio </summary>
-        public static readonly Guid DRM_Audio = new Guid(0x00000009, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
-
-        /// <summary> MEDIASUBTYPE_IEEE_FLOAT </summary>
-        public static readonly Guid IEEE_FLOAT = new Guid(0x00000003, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
-
-        /// <summary> MEDIASUBTYPE_DOLBY_AC3_SPDIF </summary>
-        public static readonly Guid DOLBY_AC3_SPDIF = new Guid(0x00000092, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
-
-        /// <summary> MEDIASUBTYPE_RAW_SPORT </summary>
-        public static readonly Guid RAW_SPORT = new Guid(0x00000240, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
-
-        /// <summary> MEDIASUBTYPE_SPDIF_TAG_241h </summary>
-        public static readonly Guid SPDIF_TAG_241h = new Guid(0x00000241, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
 
         /// <summary> MEDIASUBTYPE_DssVideo </summary>
         public static readonly Guid DssVideo = new Guid(0xa0af4f81, 0xe163, 0x11d0, 0xba, 0xd9, 0x00, 0x60, 0x97, 0x44, 0x11, 0x1a);
@@ -1575,8 +2114,8 @@ namespace DirectShowLib
         /// <summary> MEDIASUBTYPE_MPEG2_AUDIO </summary>
         public static readonly Guid Mpeg2Audio = new Guid(0xe06d802b, 0xdb46, 0x11cf, 0xb4, 0xd1, 0x00, 0x80, 0x5f, 0x6c, 0xbb, 0xea);
 
-        /// <summary> MEDIASUBTYPE_DOLBY_AC3 </summary>
-        public static readonly Guid DolbyAC3 = new Guid(0xe06d802c, 0xdb46, 0x11cf, 0xb4, 0xd1, 0x00, 0x80, 0x5f, 0x6c, 0xbb, 0xea);
+        /// <summary> MEDIASUBTYPE_MPEG2_DVD </summary>
+        public static readonly Guid Mpeg2DvD = new Guid(0xe06d802c, 0xdb46, 0x11cf, 0xb4, 0xd1, 0x00, 0x80, 0x5f, 0x6c, 0xbb, 0xea);
 
         /// <summary> MEDIASUBTYPE_DVB_SI </summary>
         public static readonly Guid DvbSI = new Guid(0xe9dd31a3, 0x221d, 0x4adb, 0x85, 0x32, 0x9a, 0xf3, 0x09, 0xc1, 0xa4, 0x08);
@@ -1599,9 +2138,21 @@ namespace DirectShowLib
         /// <summary> MEDIASUBTYPE_None </summary>
         public static readonly Guid None = new Guid(0xe436eb8e, 0x524f, 0x11ce, 0x9f, 0x53, 0x00, 0x20, 0xaf, 0x0b, 0xa7, 0x70);
 
-        /// <summary> MEDIASUBTYPE_H264 </summary>
-        public static readonly Guid H264 = new Guid(0x34363248, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
-
+        /// <summary> MEDIASUBTYPE_BDA_MPEG2_TRANSPORT </summary>
+        public static readonly Guid BdaMpeg2Transport = new Guid(0xF4AEB342, 0x0329, 0x4fdd, 0xA8, 0xFD, 0x4A, 0xFF, 0x49, 0x26, 0xC9, 0x78);
+    
+        /// <summary> MEDIASUBTYPE_VC1 </summary>
+        public static readonly Guid VC1 = new Guid(0x31435657, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+        /// <summary> MEDIASUBTYPE_VC1_Cyberlink </summary>
+        public static readonly Guid CyberlinkVC1 = new Guid(0xD979F77B, 0xDBEA, 0x4BF6, 0x9E, 0x6D, 0x1D, 0x7E, 0x57, 0xFB, 0xAD, 0x53);
+    
+        // 44495658-0000-0010-8000-00AA00389B71
+        public static readonly Guid XVID1 = new Guid(0x44495658, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
+        // 64697678-0000-0010-8000-00AA00389B71
+        public static readonly Guid XVID2 = new Guid(0x64697678, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
+    
         /// <summary> MEDIASUBTYPE_NV24 </summary>
         public static readonly Guid NV24 = new Guid(0x3432564E, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
 
@@ -1610,6 +2161,9 @@ namespace DirectShowLib
 
         /// <summary> MEDIASUBTYPE_DtvCcData </summary>
         public static readonly Guid DtvCcData = new Guid(0xF52ADDAA, 0x36F0, 0x43F5, 0x95, 0xEA, 0x6D, 0x86, 0x64, 0x84, 0x26, 0x2A);
+
+        /// <summary> MEDIASUBTYPE_LATM_AAC_LAF_SPLITTER </summary>
+        public static readonly Guid LATMAACLAF = new Guid(0x53544441, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71);
 
         /// <summary> MEDIASUBTYPE_DVB_SUBTITLES </summary>
         public static readonly Guid DVB_Subtitles = new Guid(0x34FFCBC3, 0xD5B3, 0x4171, 0x90, 0x02, 0xD4, 0xC6, 0x03, 0x01, 0x69, 0x7F);
@@ -1662,9 +2216,32 @@ namespace DirectShowLib
         /// <summary> MEDIASUBTYPE_CPFilters_Processed </summary>
         public static readonly Guid CPFilters_Processed = new Guid(0x46adbd28, 0x6fd0, 0x4796, 0x93, 0xb2, 0x15, 0x5c, 0x51, 0xdc, 0x4, 0x8d);
 
+        /// <summary>MEDIASUBTYPE_UTF8</summary>
+        public static readonly Guid Utf8 = new Guid(0x87c0b230, 0x3a8, 0x4fdf, 0x80, 0x10, 0xb2, 0x7a, 0x58, 0x48, 0x20, 0xd);
+    
+        /// <summary>MEDIASUBTYPE_SSA</summary>
+        public static readonly Guid Ssa = new Guid(0x3020560f, 0x255a, 0x4ddc, 0x80, 0x6e, 0x6c, 0x5c, 0xc6, 0xdc, 0xd7, 0xa);
+    
+        /// <summary>MEDIASUBTYPE_ASS</summary>
+        public static readonly Guid Ass = new Guid(0x326444f7, 0x686f, 0x47ff, 0xa4, 0xb2, 0xc8, 0xc9, 0x63, 0x7, 0xb4, 0xc2);
+    
+        /// <summary>MEDIASUBTYPE_ASS2</summary>
+        public static readonly Guid Ass2 = new Guid(0x370689e7, 0xb226, 0x4f67, 0x97, 0x8d, 0xf1, 0xb, 0xc1, 0xa9, 0xc6, 0xae);
+    
+        /// <summary>MEDIASUBTYPE_SSF</summary>
+        public static readonly Guid Ssf = new Guid(0x76c421c4, 0xdb89, 0x42ec, 0x93, 0x6e, 0xa9, 0xfb, 0xc1, 0x79, 0x47, 0x14);
+    
+        /// <summary>MEDIASUBTYPE_VOBSUB</summary>
+        public static readonly Guid VobSub = new Guid(0xf7239e31, 0x9599, 0x4e43, 0x8d, 0xd5, 0xfb, 0xaf, 0x75, 0xcf, 0x37, 0xf1);
+    
+        /// <summary>MEDIASUBTYPE_HDMVSUB</summary>
+        public static readonly Guid HdmvSub = new Guid(0x4eba53e, 0x9330, 0x436c, 0x91, 0x33, 0x55, 0x3e, 0xc8, 0x70, 0x31, 0xdc);
+    
+        /// <summary>MEDIASUBTYPE_DVB_SUBTITLES</summary>
+        public static readonly Guid DvbSub = new Guid(0x34FFCBC3, 0xD5B3, 0x4171, 0x90, 0x02, 0xD4, 0xC6, 0x03, 0x01, 0x69, 0x7F);
     }
 
-    static public class FormatType
+    public static class FormatType
     {
         public static readonly Guid Null = Guid.Empty;
 
@@ -1711,7 +2288,7 @@ namespace DirectShowLib
         public static readonly Guid CPFilters_Processed = new Guid(0x6739b36f, 0x1d5f, 0x4ac2, 0x81, 0x92, 0x28, 0xbb, 0xe, 0x73, 0xd1, 0x6a);
     }
 
-    static public class DSAttrib
+    public static class DSAttrib
     {
         /// <summary> DSATTRIB_UDCRTag </summary>
         public static readonly Guid UDCRTag = new Guid(0xEB7836CA, 0x14FF, 0x4919, 0xbc, 0xe7, 0x3a, 0xf1, 0x23, 0x19, 0xe5, 0x0c);
@@ -1748,7 +2325,7 @@ namespace DirectShowLib
 
     }
 
-    static public class PropSetID
+    public static class PropSetID
     {
         /// <summary> AMPROPSETID_Pin</summary>
         public static readonly Guid Pin = new Guid(0x9b00f101, 0x1567, 0x11d1, 0xb3, 0xf1, 0x00, 0xaa, 0x00, 0x37, 0x61, 0xc5);
@@ -1794,7 +2371,7 @@ namespace DirectShowLib
 
     }
 
-    static public class PinCategory
+    public static class PinCategory
     {
         /// <summary> PIN_CATEGORY_CAPTURE </summary>
         public static readonly Guid Capture = new Guid(0xfb6c4281, 0x0353, 0x11d1, 0x90, 0x5f, 0x00, 0x00, 0xc0, 0xcc, 0x16, 0xba);
@@ -1834,7 +2411,7 @@ namespace DirectShowLib
 
     }
 
-    static public class FindDirection
+    public static class FindDirection
     {
         /// <summary> LOOK_UPSTREAM_ONLY </summary>
         public static readonly Guid UpstreamOnly = new Guid(0xac798be0, 0x98e3, 0x11d1, 0xb3, 0xf1, 0x00, 0xaa, 0x00, 0x37, 0x61, 0xc5);
@@ -1843,7 +2420,7 @@ namespace DirectShowLib
         public static readonly Guid DownstreamOnly = new Guid(0xac798be1, 0x98e3, 0x11d1, 0xb3, 0xf1, 0x00, 0xaa, 0x00, 0x37, 0x61, 0xc5);
     }
 
-    static public class TimeFormat
+    public static class TimeFormat
     {
         // 00000000-0000-0000-0000-000000000000 TIME_FORMAT_NONE
         public static readonly Guid None = new Guid(0x0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -1864,7 +2441,7 @@ namespace DirectShowLib
         public static readonly Guid MediaTime = new Guid(0x7b785574, 0x8c82, 0x11cf, 0xbc, 0x0c, 0x00, 0xaa, 0x00, 0xac, 0x74, 0xf6);
     }
 
-    static public class PropertyPages
+    public static class PropertyPages
     {
         /// <summary> CLSID_CrossbarFilterPropertyPage </summary>
         public static readonly Guid CrossbarFilterPropertyPage = new Guid(0x71f96461, 0x78f3, 0x11d0, 0xa1, 0x8c, 0x00, 0xa0, 0xc9, 0x11, 0x89, 0x56);
@@ -1924,7 +2501,7 @@ namespace DirectShowLib
         public static readonly Guid TVAudioFilterPropertyPage = new Guid(0x71f96463, 0x78f3, 0x11d0, 0xa1, 0x8c, 0x00, 0xa0, 0xc9, 0x11, 0x89, 0x56);
     }
 
-    static public class BDANodeCategory
+    public static class BDANodeCategory
     {
         /// <summary> KSNODE_BDA_RF_TUNER </summary>
         public static readonly Guid RFTuner = new Guid(0x71985f4c, 0x1ca1, 0x11d3, 0x9c, 0xc8, 0x00, 0xc0, 0x4f, 0x79, 0x71, 0xe0);
@@ -1955,7 +2532,7 @@ namespace DirectShowLib
 
     }
 
-    static public class TAGTables
+    public static class TAGTables
     {
         /// <summary> UUID_UdriTagTables </summary>
         public static readonly Guid UdriTagTables = new Guid(0xe1b98d74, 0x9778, 0x4878, 0xb6, 0x64, 0xeb, 0x20, 0x20, 0x36, 0x4d, 0x88);
@@ -1963,6 +2540,13 @@ namespace DirectShowLib
         /// <summary> UUID_WMDRMTagTables </summary>
         public static readonly Guid WMDRMTagTables = new Guid(0x5DCD1101, 0x9263, 0x45bb, 0xa4, 0xd5, 0xc4, 0x15, 0xab, 0x8c, 0x58, 0x9c);
     }
+
+  public static class SourceFilters
+  {
+
+    /// <summary> CLSID_StreamBufferSource </summary>
+    public static readonly Guid StreamBufferSource = new Guid("C9F5FE02-F851-4eb5-99EE-AD602AF1E619");
+  }
 
     #endregion
 }

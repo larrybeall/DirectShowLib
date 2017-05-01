@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace DirectShowLib
 {
@@ -338,7 +339,7 @@ namespace DirectShowLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("c47a3420-005c-11d2-9038-00a0c9697298"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IAMParse
@@ -353,7 +354,7 @@ namespace DirectShowLib
         int Flush();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("256A6A21-FBAD-11d1-82BF-00A0C9696C8F"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IAMVideoAcceleratorNotify
@@ -371,7 +372,7 @@ namespace DirectShowLib
             [Out] IntPtr ppMiscData); // LPVOID
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("256A6A22-FBAD-11d1-82BF-00A0C9696C8F"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IAMVideoAccelerator
@@ -438,7 +439,7 @@ namespace DirectShowLib
             [In] IMediaSample pMediaSample);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("56a868fd-0ad4-11ce-b0a3-0020af0ba770"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IAMFilterGraphCallback
@@ -447,7 +448,7 @@ namespace DirectShowLib
         int UnableToRender(IPin pPin);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("AB6B4AFE-F6E4-11d0-900D-00C04FD9189D"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IDirectDrawMediaSample
@@ -461,7 +462,7 @@ namespace DirectShowLib
         int LockMediaSamplePointer();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("AB6B4AFC-F6E4-11d0-900D-00C04FD9189D"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IDirectDrawMediaSampleAllocator
@@ -469,12 +470,11 @@ namespace DirectShowLib
         [PreserveSig]
         int GetDirectDraw(
             [MarshalAs(UnmanagedType.IUnknown)] out object ppDirectDraw); // IDirectDraw
-
     }
 
 #endif
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("45086030-F7E4-486a-B504-826BB5792A3B"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IConfigAsfWriter
@@ -510,7 +510,7 @@ namespace DirectShowLib
         int GetIndexMode([Out, MarshalAs(UnmanagedType.Bool)] out bool pbIndexFile);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("546F4260-D53E-11cf-B3F0-00AA003761C5"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IAMDirectSound
@@ -540,7 +540,7 @@ namespace DirectShowLib
         int GetFocusWindow(out IntPtr hWnd, [Out, MarshalAs(UnmanagedType.Bool)] out bool bSet);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("C056DE21-75C2-11d3-A184-00105AEF9F33"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IAMWstDecoder
@@ -600,7 +600,7 @@ namespace DirectShowLib
         int SetCurrentPage([In] WSTPage WstPage);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("b45dd570-3c77-11d1-abe1-00a0c905f375"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IMpegAudioDecoder
@@ -671,7 +671,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("6d5140c1-7436-11ce-8034-00aa006009fa"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IServiceProvider
@@ -684,7 +684,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("FC4801A3-2BA9-11CF-A229-00AA003D7352"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IObjectWithSite
@@ -701,7 +701,7 @@ namespace DirectShowLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("7989CCAA-53F0-44f0-884A-F3B03F6AE066"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IConfigAsfWriter2 : IConfigAsfWriter
@@ -759,10 +759,9 @@ namespace DirectShowLib
 
         [PreserveSig]
         int ResetMultiPassState();
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("a8809222-07bb-48ea-951c-33158100625b"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IGetCapabilitiesKey

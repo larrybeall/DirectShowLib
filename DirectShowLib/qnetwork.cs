@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 using System;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace DirectShowLib
 {
@@ -51,7 +52,7 @@ namespace DirectShowLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("FA2AA8F1-8B62-11D0-A520-000000000000"),
     InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IAMNetShowConfig
@@ -121,10 +122,9 @@ namespace DirectShowLib
 
         [PreserveSig]
         int put_EnableHTTP([MarshalAs(UnmanagedType.VariantBool)] bool EnableHTTP);
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("FA2AA8F2-8B62-11D0-A520-000000000000"),
     InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IAMChannelInfo
@@ -146,10 +146,9 @@ namespace DirectShowLib
 
         [PreserveSig]
         int get_ContactEmail([MarshalAs(UnmanagedType.BStr)] out string pbstrContactEmail);
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("FA2AA8F3-8B62-11D0-A520-000000000000"),
     InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IAMNetworkStatus
@@ -174,10 +173,9 @@ namespace DirectShowLib
 
         [PreserveSig]
         int get_BufferingProgress(out int pBufferingProgress);
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("FA2AA8F5-8B62-11D0-A520-000000000000"),
     InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IAMNetShowExProps
@@ -208,10 +206,9 @@ namespace DirectShowLib
 
         [PreserveSig]
         int get_SourceLink([MarshalAs(UnmanagedType.BStr)] out string pbstrSourceLink);
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("FA2AA8F6-8B62-11D0-A520-000000000000"),
     InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IAMExtendedErrorInfo
@@ -224,10 +221,9 @@ namespace DirectShowLib
 
         [PreserveSig]
         int get_ErrorCode(out int pErrorCode);
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("AAE7E4E2-6388-11D1-8D93-006097C9A2B2"),
     InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IAMNetShowPreroll
@@ -237,10 +233,9 @@ namespace DirectShowLib
 
         [PreserveSig]
         int get_Preroll([MarshalAs(UnmanagedType.VariantBool)] out bool pfPreroll);
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("4746B7C8-700E-11D1-BECC-00C04FB6E937"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IDShowPlugin
@@ -250,12 +245,11 @@ namespace DirectShowLib
 
         [PreserveSig]
         int get_UserAgent([MarshalAs(UnmanagedType.BStr)] out string pUserAgent);
-
     }
 
 #endif
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("FA2AA8F4-8B62-11D0-A520-000000000000"),
     InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IAMMediaContent
@@ -298,10 +292,9 @@ namespace DirectShowLib
 
         [PreserveSig]
         int get_MoreInfoText([MarshalAs(UnmanagedType.BStr)] out string pbstrMoreInfoText);
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("FA2AA8F9-8B62-11D0-A520-000000000000"),
     InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IAMExtendedSeeking
@@ -329,10 +322,9 @@ namespace DirectShowLib
 
         [PreserveSig]
         int get_PlaybackSpeed(out double pSpeed);
-
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("CE8F78C1-74D9-11D2-B09D-00A0C9A81117"),
     InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IAMMediaContent2
@@ -345,7 +337,6 @@ namespace DirectShowLib
 
         [PreserveSig]
         int get_PlaylistCount(out int pNumberEntries);
-
     }
 
     #endregion

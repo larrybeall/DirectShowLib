@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 using System;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace DirectShowLib.DMO
 {
@@ -130,7 +131,7 @@ namespace DirectShowLib.DMO
 
     #region Interfaces
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
     Guid("6D6CBB60-A223-44AA-842F-A2F06750BE6D")]
     public interface IMediaParamInfo
@@ -170,7 +171,7 @@ namespace DirectShowLib.DMO
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
     Guid("6D6CBB61-A223-44AA-842F-A2F06750BE6E")]
     public interface IMediaParams
